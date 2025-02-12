@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,34 +9,40 @@ namespace FigurasOOP
 {
     internal class Triangulo : Poligono
     {
-        private int alto;
-        private int ancho;
-        private int angBeta;
+        private int ladoA;
+        private int ladoB;
+        private int ladoC;
 
-        public int Alto
-            { get { return alto; } set { alto = value; } }
+        public int LadoA
+            { get { return ladoA; } set { ladoA = value; } }
 
-        public int Ancho
-            { get { return ancho; } set { ancho = value; } }
+        public int LadoB
+            { get { return ladoB; } set { ladoB = value; } }
 
-        public int AngBeta    
-            { get { return angBeta; } set { angBeta = value; } }
+        public int LadoC    
+            { get { return ladoC; } set { ladoC = value; } }
 
-        public Triangulo(int alt, int anch, int ang): base(3)
+        public Triangulo(int lA, int lB, int lC): base(3)
         {
-            this.alto = alt;
-            this.ancho = anch;
-            this.angBeta = ang;
+            this.ladoA = lA;
+            this.ladoB = lB;
+            this.ladoC = lC;
         }
 
         public override double Area()
         {
-            return ((double)this.alto * (double)this.ancho) / 2;
+            double s = (ladoA + ladoB + ladoC) / 2;
+            return Math.Sqrt(s * (s - ladoA) * (s - ladoB) * (s - ladoC));
+        }
+
+        public override double Perimetro()
+        {
+            return (double)(ladoA + ladoB + ladoC);
         }
 
         public override string ToString()
         {
-            return $"Triangulo de altura {alto}, anchura {ancho} unidades y angulo beta {angBeta} grados. Area {this.Area()}";
+            return $"Triangulo de lados {ladoA}, {ladoB} y {ladoC} unidades. Area {this.Area()}. Perimetro {this.Perimetro()}.";
         }
     }
 }

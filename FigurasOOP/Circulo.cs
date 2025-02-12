@@ -21,9 +21,14 @@ namespace FigurasOOP
             this.Radius = radius;
         }
 
+        public override double Perimetro()
+        {
+            return 2 * Math.PI * Radius;
+        }
+
         public override string ToString()
         {
-            return $"Circulo de radio {radius} unidades. Area {this.Area()}";
+            return $"Circulo de radio {radius} unidades. Area {this.Area()}. Perimetro {this.Perimetro()}.";
         }
     }
 }

@@ -9,7 +9,7 @@ namespace FigurasOOP
 {
     internal class Program
     {
-        static List<Forma> ListFormas = new List<Forma>();
+        static Diagrama Diagrama = new Diagrama();
 
         static void Main(string[] args)
         {
@@ -19,9 +19,10 @@ namespace FigurasOOP
         public static void Menu()
         {
             Console.WriteLine(@"La opcion del menu
-1. Ver lista de figuras
-2. Crear Figura
-3. Salir");
+1. Ver lista de figuras en diagrama
+2. Crear Figura en diagrama
+3. Sumatoria de area y perimetro
+4. Salir");
             while (true)
             {
                 int opt = ConvertStringInt("Selecciona opcion del menu ");
@@ -29,21 +30,19 @@ namespace FigurasOOP
                 switch (opt)
                 {
                     case 1:
-                        MostrarLista();
+                        Console.WriteLine(Diagrama.MostrarDiagrama());
                         break;
                     case 2:
                         CrearFigura();
                         break;
-                    
+                    case 3:
+                        Console.WriteLine($"Total area: {Diagrama.SumaArea()}. Total Perimetro: {Diagrama.SumaPerimetro()}.");
+                        break;
+                    default:
+                        break;
                 }
 
             }
-        }
-
-        public static void MostrarLista()
-        {
-            foreach (Forma forma in ListFormas) 
-                Console.WriteLine(forma.ToString());
         }
 
         public static void CrearFigura()
@@ -60,19 +59,19 @@ namespace FigurasOOP
             switch (opt)
             {
                 case 1:
-                    ListFormas.Add(new Circulo(ConvertStringInt("Radio del circulo: ")));
+                    Diagrama.AddForma(new Circulo(ConvertStringInt("Radio del circulo: ")));
                     break;
                 case 2:
-                    ListFormas.Add(new Elipse(ConvertStringInt("Radio1: "), ConvertStringInt("Radio 2: ")));
+                    Diagrama.AddForma(new Elipse(ConvertStringInt("Radio 1: "), ConvertStringInt("Radio 2: ")));
                     break;
                 case 3:
-                    ListFormas.Add(new Triangulo(ConvertStringInt("Alto: "), ConvertStringInt("Ancho: "), ConvertStringInt("Angulo: ")));
+                    Diagrama.AddForma(new Triangulo(ConvertStringInt("Lado 1: "), ConvertStringInt("Lado 2: "), ConvertStringInt("Lado 3: ")));
                     break;
                 case 4:
-                    ListFormas.Add(new Cuadrado(ConvertStringInt("Lado: ")));
+                    Diagrama.AddForma(new Cuadrado(ConvertStringInt("Lado: ")));
                     break;
                 case 5:
-                    ListFormas.Add(new Rectangulo(ConvertStringInt("Alto: "), ConvertStringInt("Ancho: ")));
+                    Diagrama.AddForma(new Rectangulo(ConvertStringInt("Alto: "), ConvertStringInt("Ancho: ")));
                     break;
                 default:
                     break;

@@ -20,7 +20,9 @@ namespace FigurasOOP
 
         public override string ToString()
         {
-            return $"Cuadrado de lados de {largo} unidades. Area {this.Area()}";
+            return $"Cuadrado de lados de {largo} unidades. Area {this.Area()}. Perimetro {this.Perimetro()}.";
         }
+
+        
     }
 }

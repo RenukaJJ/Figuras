@@ -28,9 +28,14 @@ namespace FigurasOOP
             return (double)altura * (double)ancho;
         }
 
+        public override double Perimetro()
+        {
+            return (double)((altura*2)+(ancho*2));
+        }
+
         public override string ToString()
         {
-            return $"Rectangulo de altura {altura} y anchura {ancho} unidades. Area {this.Area()}";
+            return $"Rectangulo de altura {altura} y anchura {ancho} unidades. Area {this.Area()}. Perimetro {this.Perimetro()}.";
         }
     }
 }

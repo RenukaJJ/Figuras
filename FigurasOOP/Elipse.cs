@@ -26,8 +26,16 @@ namespace FigurasOOP
 
         public Elipse(int lRadius, int sRadius)
         {
-            this.LargeRadius = lRadius;
-            this.SmallRadius = sRadius;
+            if (lRadius < sRadius)
+            {
+                this.LargeRadius = lRadius;
+                this.SmallRadius = sRadius;
+            }
+            else
+            {
+                this.LargeRadius = sRadius;
+                this.SmallRadius = lRadius;
+            }
         }
 
         public override double Area()
@@ -35,9 +43,17 @@ namespace FigurasOOP
             return Math.PI * largeRadius * smallRadius;
         }
 
+        public override double Perimetro()
+        {
+            double h = Math.Pow((largeRadius - smallRadius) / (largeRadius + smallRadius), 2);
+            return Math.PI * (largeRadius + smallRadius) * (1 + (3 * h) / (10 + Math.Sqrt(4 - 3 * h)));
+        }
+
         public override string ToString()
         {
-            return $"Elipse de radio {largeRadius} y radio {smallRadius}. Area {this.Area()}";
+            return $"Elipse de radio {largeRadius} y radio {smallRadius}. Area {this.Area()}. Perimetro {this.Perimetro()}.";
         }
+
+        
     }
 }
