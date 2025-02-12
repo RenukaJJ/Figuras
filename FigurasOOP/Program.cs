@@ -74,8 +74,6 @@ namespace FigurasOOP
                 case 5:
                     ListFormas.Add(new Rectangulo(ConvertStringInt("Alto: "), ConvertStringInt("Ancho: ")));
                     break;
-                case 6:
-                    break;
                 default:
                     break;
             }
